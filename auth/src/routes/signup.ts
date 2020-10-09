@@ -18,7 +18,11 @@ router.post(
         const errors = validationResult(req);
 
         if (!errors.isEmpty()) {
-            throw new Error('Invalid email or password');
+            const error = new Error('Invalid email or password');
+
+            const reasons = errors.array();
+
+            throw { error, reasons };
         }
 
         console.log('Creating a user...');
