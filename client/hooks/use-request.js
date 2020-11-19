@@ -5,7 +5,9 @@ export default ({ url, method, body }) => {
     const [errors, setErrors] = useState(null);
 
     const doRequest = async () => {
-        try {  
+        try {
+            setErrors(null);
+
             const response = await axios[method](url, body);
 
             return response.data;
